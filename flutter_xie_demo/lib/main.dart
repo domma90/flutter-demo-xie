@@ -1,8 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_xie_demo/ui/login_screen.dart';
+import 'package:flutter_xie_demo/ui/signup_screen.dart';
 
 void main() {
   runApp(MyApp());
 }
+
+class MyApp extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      initialRoute: LoginScreen.route,
+      routes: {
+        LoginScreen.route : (context) => LoginScreen(),
+        SignupScreen.route : (context) => SignupScreen()
+      },
+    );
+  }
+
+}
+
+
+
+
+/*
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -111,3 +132,4 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+*/

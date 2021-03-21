@@ -3,18 +3,34 @@ import 'package:flutter/material.dart';
 import 'package:flutter_xie_demo/ui/register_screen.dart';
 
 class LoginScreen extends StatelessWidget {
+
+  LoginScreen();
+
   @override
   Widget build(BuildContext context) {
+    final LoginScreenArguments args = ModalRoute.of(context).settings.arguments;
+
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Login"),
       ),
-      body: LoginBody(),
+      body: args == null
+          ? LoginBody()
+          : LoginBody(
+              username: args.username,
+              password: args.password,
+            ),
     );
   }
 }
 
 class LoginBody extends StatefulWidget {
+  final String username;
+  final String password;
+
+  LoginBody({this.username, this.password});
+
   @override
   State<StatefulWidget> createState() {
     return LoginBodyState();
@@ -28,8 +44,17 @@ class LoginBodyState extends State<LoginBody> {
   @override
   void initState() {
     super.initState();
+
     usernameCont = TextEditingController();
     passwordCont = TextEditingController();
+
+    if (widget.username != null) {
+      usernameCont.text = widget.username;
+    }
+
+    if (widget.password != null) {
+      passwordCont.text = widget.password;
+    }
   }
 
   @override
@@ -41,6 +66,7 @@ class LoginBodyState extends State<LoginBody> {
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 16),
       child: Column(
@@ -108,9 +134,21 @@ class LoginBodyState extends State<LoginBody> {
   }
 
   void _register() {
-    Navigator.push(
+    /*Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => RegisterScreen()),
+    );*/
+    Navigator.pushNamed(
+      context,
+      "/register",
+      arguments: {'key1': 'value1', 'key2': 'value2'},
     );
   }
+}
+
+class LoginScreenArguments {
+  final String username;
+  final String password;
+
+  LoginScreenArguments(this.username, this.password);
 }

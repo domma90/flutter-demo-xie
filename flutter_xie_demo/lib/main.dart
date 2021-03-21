@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_xie_demo/ui/login_screen.dart';
+import 'package:flutter_xie_demo/ui/register_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,13 +10,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: LoginScreen(),
-      // routes: ,
+      // initialRoute: '/',
+      routes: {
+        '/': (context) => LoginScreen(),
+        '/register': (context) => RegisterScreen()
+      },
     );
   }
 }
-
-
 
 /*
 
@@ -127,3 +129,20 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 */
+
+/* onGenerateRoute: (settings) {
+    // If you push the PassArguments route
+    if (settings.name == PassArgumentsScreen.routeName) {
+      // Cast the arguments to the correct type: ScreenArguments.
+      final ScreenArguments args = settings.arguments;
+
+      // Then, extract the required data from the arguments and
+      // pass the data to the correct screen.
+      return MaterialPageRoute(
+        builder: (context) {
+          return PassArgumentsScreen(
+            title: args.title,
+            message: args.message,
+          );
+        },
+      );*/

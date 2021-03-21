@@ -130,7 +130,9 @@ class LoginBodyState extends State<LoginBody> {
           content: Text("Please enter a valid password"),
         ),
       );
-    } else {}
+    } else {
+      Navigator.pushNamed(context, "/users");
+    }
   }
 
   void _register() {

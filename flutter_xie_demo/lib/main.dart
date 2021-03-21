@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_xie_demo/ui/login_screen.dart';
 import 'package:flutter_xie_demo/ui/register_screen.dart';
+import 'package:flutter_xie_demo/ui/user_list_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,7 +14,8 @@ class MyApp extends StatelessWidget {
       // initialRoute: '/',
       routes: {
         '/': (context) => LoginScreen(),
-        '/register': (context) => RegisterScreen()
+        '/register': (context) => RegisterScreen(),
+        '/users': (context) => UserListScreen(),
       },
     );
   }
